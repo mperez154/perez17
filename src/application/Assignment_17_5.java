@@ -19,7 +19,7 @@ public class Assignment_17_5 extends Application {
 		FileInputStream input = new FileInputStream("C:\\Users\\mperez5\\Documents\\test.dat");
 		FileOutputStream output = new FileOutputStream("C:\\Users\\mperez5\\Documents\\test.dat");
 		
-
+		//testing to see if import worked
 		
 	}
 
