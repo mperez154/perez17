@@ -16,8 +16,15 @@ public class Assignment_17_5 extends Application {
 		Date date = new Date();
 		double myDouble = 5.5;
 		
-		FileInputStream input = new FileInputStream("C:\\Users\\mperez5\\Documents\\test.dat");
-		FileOutputStream output = new FileOutputStream("C:\\Users\\mperez5\\Documents\\test.dat");
+		//FileInputStream input = new FileInputStream("C:\\Users\\mperez5\\Documents\\test.dat");
+		//FileOutputStream output = new FileOutputStream("C:\\Users\\mperez5\\Documents\\test.dat");
+		
+		for(int i = 0; i < integers.length; i++)
+		{
+			System.out.println("Location " + i + ": " + integers[i]);
+		}
+		System.out.println("Date: " + date.getTime());
+		System.out.println("My Double: " + myDouble);
 		
 		//testing to see if import worked
 		
