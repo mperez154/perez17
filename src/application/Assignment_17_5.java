@@ -1,8 +1,10 @@
 package application;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Date;
 
 import javafx.application.Application;
@@ -11,22 +13,31 @@ import javafx.stage.Stage;
 public class Assignment_17_5 extends Application {
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) throws IOException, ClassNotFoundException {
 		int[] integers = {1,2,3,4,5};
 		Date date = new Date();
 		double myDouble = 5.5;
 		
-		//FileInputStream input = new FileInputStream("C:\\Users\\mperez5\\Documents\\test.dat");
-		//FileOutputStream output = new FileOutputStream("C:\\Users\\mperez5\\Documents\\test.dat");
-		
-		for(int i = 0; i < integers.length; i++)
+		try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("C:\\Users\\mperez5\\Documents\\test.dat", true));) 
 		{
-			System.out.println("Location " + i + ": " + integers[i]);
+			
+				// Write arrays to the object output stream
+				output.writeInt(integers[0]);
+				output.writeObject(date);
+				output.writeDouble(myDouble);
 		}
-		System.out.println("Date: " + date.getTime());
-		System.out.println("My Double: " + myDouble);
 		
-		//testing to see if import worked
+		
+		try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("C:\\Users\\mperez5\\Documents\\test.dat"));)
+		{
+			
+			int outputInt = input.readInt();
+			Date date1 = (Date)(input.readObject());
+			double outputDouble = input.readDouble();
+			
+					
+			System.out.println("New Test: \nDouble: " + outputDouble + "\nDate: " + date1 + "\nInteger: " + outputInt);
+		}
 		
 	}
 
